@@ -52,11 +52,11 @@ var cleaveReactClass = CreateReactClass({
             { onKeyDown, onChange, onFocus, onBlur, onInit } = owner.registeredEvents;
 
         owner.registeredEvents = {
-            onInit:    props.onInit === onInit ? onInit : props.onInit,
-            onChange:  props.onChange === onChange ? onChange : props.onChange,
-            onFocus:   props.onFocus === onFocus ? onFocus : props.onFocus,
-            onBlur:    props.onBlur === onBlur ? onBlur : props.onBlur,
-            onKeyDown: props.onKeyDown === onKeyDown ? onKeyDown : props.onKeyDown
+            onInit:    props.onInit === onInit || typeof props.onInit !== 'function' ? onInit : props.onInit,
+            onChange:  props.onChange === onChange || typeof props.onChange !== 'function' ? onChange : props.onChange,
+            onFocus:   props.onFocus === onFocus || typeof props.onFocus !== 'function' ? onFocus : props.onFocus,
+            onBlur:    props.onBlur === onBlur || typeof props.onBlur !== 'function' ? onBlur : props.onBlur,
+            onKeyDown: props.onKeyDown === onKeyDown || typeof props.onKeyDown !== 'function' ? onKeyDown : props.onKeyDown
         };
     },
 
